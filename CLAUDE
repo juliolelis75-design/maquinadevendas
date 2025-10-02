@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforme seu WhatsApp em uma Máquina de Vendas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+            color: white;
+            padding: 100px 20px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        .hero-bonus {
+            background: rgba(255, 215, 0, 0.95);
+            color: #1a1a1a;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-bonus small {
+            font-size: 0.7em;
+            font-weight: 400;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: #00d856;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #00b847;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,216,86,0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0066cc;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+        }
+
+        /* Diferenciais */
+        .diferenciais {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .diferenciais h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: #0066cc;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .diferencial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid #0066cc;
+        }
+
+        .diferencial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,102,204,0.15);
+        }
+
+        .diferencial-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .diferencial-card h3 {
+            color: #0066cc;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        /* Oferta Especial */
+        .oferta-especial {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oferta-especial::before {
+            content: '🎁';
+            position: absolute;
+            font-size: 15em;
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .oferta-especial h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .oferta-destaque {
+            background: rgba(255,255,255,0.2);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .oferta-destaque h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        /* Cases de Sucesso */
+        .cases {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .cases h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: #0066cc;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .case-card {
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 5px solid #00d856;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .case-card::before {
+            content: '⭐⭐⭐⭐⭐';
+            display: block;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .case-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        .case-author {
+            font-weight: 600;
+            color: #0066cc;
+        }
+
+        /* Formulário */
+        .formulario {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .form-container h2 {
+            color: #0066cc;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: #00d856;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #00b847;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,216,86,0.3);
+        }
+
+        /* Demonstração */
+        .demonstracao {
+            padding: 80px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .demonstracao h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+
+        .demonstracao p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .calendario-placeholder {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        /* Urgência */
+        .urgencia {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .urgencia h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .urgencia p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 20px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #00d856;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #00d856;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .diferenciais h2, .cases h2, .demonstracao h2, .urgencia h2 {
+                font-size: 2em;
+            }
+
+            .btn {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>💎 Transforme o seu WhatsApp em uma máquina de vendas</h1>
+            <p>Automatize seu WhatsApp com Inteligência Artificial e tenha um atendente 24h por dia, 7 dias por semana – totalmente humanizado e no estilo do seu negócio.</p>
+            <div class="hero-bonus">
+                🎁 BÔNUS: 60 DIAS DE TRÁFEGO PAGO GRÁTIS!*
+                <small>*Consulte condições</small>
+            </div>
+            <div class="cta-buttons">
+                <a href="#formulario" class="btn btn-primary pulse">💰 Quero automatizar meu WhatsApp</a>
+                <a href="https://wa.me/5531936182619?text=Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20gratuita%20para%20conhecer%20a%20automa%C3%A7%C3%A3o!" target="_blank" class="btn btn-secondary">🎯 Agendar demonstração gratuita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="diferenciais">
+        <div class="container">
+            <h2>Por que escolher nossa automação?</h2>
+            <div class="diferenciais-grid">
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">🕐</span>
+                    <h3>Atendimento 24/7</h3>
+                    <p>Nunca mais perca uma venda por estar fora do horário comercial. Seu cliente é atendido às 3h da manhã ou no domingo!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">🎭</span>
+                    <h3>100% Humanizado</h3>
+                    <p>Conversa com a cara e o tom do seu negócio. Seus clientes NÃO vão perceber que é automático!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">📈</span>
+                    <h3>Até 300% Mais Conversões</h3>
+                    <p>Resposta imediata = cliente satisfeito = venda fechada. É matemática!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">⏱️</span>
+                    <h3>Economia de Tempo</h3>
+                    <p>Sua equipe para de responder "oi", "bom dia" e "qual o horário?" e foca em FECHAR VENDAS!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">💰</span>
+                    <h3>Economize R$ 3.000+/mês</h3>
+                    <p>Substitui 2-3 atendentes humanos. Sem férias, sem 13º, sem atrasos. Só resultados!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">⚡</span>
+                    <h3>Resposta em 2 Segundos</h3>
+                    <p>Enquanto seu concorrente demora 10 minutos, você já conquistou o cliente!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">📅</span>
+                    <h3>Agendamento Automático</h3>
+                    <p>Integração direta com Google Agenda. Seu cliente marca consulta/visita sozinho!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">📊</span>
+                    <h3>Organização Total</h3>
+                    <p>Todo histórico salvo, leads organizados, zero chance de esquecer um cliente!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">🚀</span>
+                    <h3>Escalabilidade Infinita</h3>
+                    <p>Atende 1.000 pessoas ao mesmo tempo sem perder qualidade. Impossível para humanos!</p>
+                </div>
+                <div class="diferencial-card">
+                    <span class="diferencial-icon">🎓</span>
+                    <h3>Suporte VIP Completo</h3>
+                    <p>Treinamento hands-on + acompanhamento semanal. Você nunca fica sozinho!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oferta Especial -->
+    <section class="oferta-especial">
+        <div class="container">
+            <h2>🔥 OFERTA EXPLOSIVA - VAGAS LIMITADAS! 🔥</h2>
+            <div class="oferta-destaque">
+                <h3>🎁 60 DIAS DE TRÁFEGO PAGO 100% GRÁTIS! 🎁</h3>
+                <p style="font-size: 1.3em; margin-top: 15px;">Contrate HOJE e ganhe 60 dias de gestão profissional de tráfego pago COMPLETAMENTE GRÁTIS!</p>
+                <p style="font-size: 1.1em; margin-top: 10px;">📊 Campanhas otimizadas + Criativos profissionais + Análise diária</p>
+                <p style="font-size: 0.9em; margin-top: 15px; opacity: 0.9;">*Você investe apenas no custo das campanhas (budget de anúncios)</p>
+            </div>
+            <a href="#formulario" class="btn btn-primary" style="margin-top: 30px; font-size: 1.2em;">💎 SIM! QUERO APROVEITAR ESTA OFERTA AGORA</a>
+            <p style="margin-top: 20px; font-size: 1.1em;">⏰ Oferta válida apenas para os próximos 10 contratantes!</p>
+        </div>
+    </section>
+
+    <!-- Cases de Sucesso -->
+    <section class="cases">
+        <div class="container">
+            <h2>💬 Veja o que nossos clientes estão dizendo</h2>
+            <div class="cases-grid">
+                <div class="case-card">
+                    <p>"Em apenas 30 dias conseguimos DOBRAR as conversões de WhatsApp com o atendimento automatizado! Meu faturamento aumentou 80% 🚀"</p>
+                    <div class="case-author">Maria S., Clínica de Estética</div>
+                </div>
+                <div class="case-card">
+                    <p>"Economizamos mais de R$ 3 mil por mês em custos com atendentes. E o melhor: a qualidade do atendimento MELHOROU! 💰"</p>
+                    <div class="case-author">João P., Auto Peças</div>
+                </div>
+                <div class="case-card">
+                    <p>"Hoje respondemos 100% dos clientes na HORA, mesmo às 2h da manhã! Minhas vendas noturnas triplicaram! 🌙✨"</p>
+                    <div class="case-author">Carla M., Restaurante</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário -->
+    <section class="formulario" id="formulario">
+        <div class="container">
+            <div class="form-container">
+                <h2>🚀 Preencha agora e transforme seu WhatsApp em uma máquina de vendas!</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 25px;">⚡ Resposta em menos de 5 minutos!</p>
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa/Negócio *</label>
+                        <input type="text" id="empresa" name="empresa" required>
+                    </div>
+                    <button type="submit" class="btn-submit">💰 QUERO AUTOMATIZAR MEU WHATSAPP AGORA!</button>
+                </form>
+                <p style="text-align: center; color: #666; margin-top: 15px; font-size: 0.9em;">🔒 Seus dados estão 100% seguros conosco</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demonstração -->
+    <section class="demonstracao" id="demonstracao">
+        <div class="container">
+            <h2>🎯 Agende sua demonstração 100% gratuita</h2>
+            <p>Veja na prática como a IA vai revolucionar seu atendimento e MULTIPLICAR suas vendas! 🚀</p>
+            <div class="calendario-placeholder">
+                <h3 style="color: #0066cc; margin-bottom: 20px;">📅 Escolha o melhor horário para você</h3>
+                <p style="color: #666; margin-bottom: 30px;">👨‍💼 Demonstração ao vivo com nosso especialista + Análise gratuita do seu negócio</p>
+                <a href="https://wa.me/5531936182619?text=Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20gratuita%20para%20conhecer%20a%20automa%C3%A7%C3%A3o!" target="_blank" class="btn btn-primary">💎 Agendar Minha Demonstração Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgência -->
+    <section class="urgencia">
+        <div class="container">
+            <h2>⚠️ ATENÇÃO: Você está perdendo dinheiro AGORA MESMO! ⚠️</h2>
+            <p>🚨 Cada cliente que você NÃO responde na hora é uma venda perdida para seu concorrente! 🚨</p>
+            <p style="margin-top: 20px;">Enquanto você lê isso, seu concorrente já está usando IA para responder em 2 segundos e fechar mais vendas.</p>
+            <p style="margin-top: 20px; font-weight: 700; font-size: 1.4em;">❌ Não deixe mais dinheiro na mesa!</p>
+            <a href="#formulario" class="btn btn-primary" style="font-size: 1.2em; margin-top: 20px;">💎 QUERO PARAR DE PERDER VENDAS AGORA</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre Nós</h3>
+                    <p>Transformamos seu WhatsApp em uma máquina de vendas com inteligência artificial de última geração.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>📱 WhatsApp: (31) 93618-2619</li>
+                        <li>📧 Email: contato@seusite.com</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#formulario">Contratar Agora</a></li>
+                        <li><a href="#demonstracao">Agendar Demonstração</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Automação WhatsApp IA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Manipulação do formulário
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nome: document.getElementById('nome').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                email: document.getElementById('email').value,
+                empresa: document.getElementById('empresa').value
+            };
+            
+            alert('Obrigado pelo interesse! Em breve entraremos em contato.\n\n' + 
+                  'Dados recebidos:\n' + 
+                  'Nome: ' + formData.nome + '\n' +
+                  'WhatsApp: ' + formData.whatsapp + '\n' +
+                  'Email: ' + formData.email + '\n' +
+                  'Empresa: ' + formData.empresa);
+            
+            this.reset();
+        });
+
+        // Máscara para WhatsApp
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            if (value.length > 10) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else if (value.length > 0) {
+                value = value.replace(/^(\d*)/, '($1');
+            }
+            
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
